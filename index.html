@@ -1,373 +1,407 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Con Te ❤️</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Con Te ❤️</title>
 
-  <style>
-    :root {
-      --bg1: #0f172a;
-      --bg2: #312e81;
-      --card: rgba(255,255,255,0.12);
-      --text: #ffffff;
-      --soft: rgba(255,255,255,0.75);
-      --pink: #fb7185;
-      --blue: #60a5fa;
-      --green: #86efac;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(160deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    .app {
-      max-width: 430px;
-      margin: auto;
-      padding: 22px;
-      padding-bottom: 90px;
-    }
-
-    .hero {
-      margin-top: 30px;
-      padding: 25px;
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      backdrop-filter: blur(20px);
-    }
-
-    h1 {
-      font-size: 34px;
-      margin: 0 0 8px;
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    .muted {
-      color: var(--soft);
-    }
-
-    .daily {
-      margin-top: 18px;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    button, .btn {
-      border: none;
-      border-radius: 24px;
-      padding: 18px;
-      font-size: 16px;
-      font-weight: 700;
-      color: white;
-      background: rgba(255,255,255,.14);
-      box-shadow: 0 10px 30px rgba(0,0,0,.18);
-      text-decoration: none;
-      display: block;
-      text-align: center;
-    }
-
-    .big {
-      grid-column: span 2;
-      background: linear-gradient(135deg, #fb7185, #f97316);
-    }
-
-    .card {
-      display: none;
-      margin-top: 22px;
-      padding: 22px;
-      border-radius: 30px;
-      background: rgba(255,255,255,.12);
-      box-shadow: 0 20px 50px rgba(0,0,0,.2);
-      backdrop-filter: blur(18px);
-    }
-
-    .card.active {
-      display: block;
-    }
-
-    .circle {
-      width: 170px;
-      height: 170px;
-      margin: 25px auto;
-      border-radius: 50%;
-      background: radial-gradient(circle, #93c5fd, #6366f1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 800;
-      animation: breathe 8s infinite ease-in-out;
-      box-shadow: 0 0 45px rgba(147,197,253,.7);
-    }
-
-    @keyframes breathe {
-      0% { transform: scale(.85); }
-      50% { transform: scale(1.25); }
-      100% { transform: scale(.85); }
-    }
-
-    textarea, input, select {
-      width: 100%;
-      border: none;
-      border-radius: 18px;
-      padding: 15px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-
-    .warning {
-      background: rgba(239,68,68,.2);
-      border: 1px solid rgba(255,255,255,.2);
-      padding: 15px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
-
-    .bottom {
-      position: fixed;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(430px, calc(100% - 28px));
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      background: rgba(15,23,42,.75);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      padding: 10px;
-    }
-
-    .bottom button {
-      padding: 12px 5px;
-      font-size: 12px;
-      border-radius: 16px;
-      box-shadow: none;
-    }
-
-    .sos {
-      background: linear-gradient(135deg, #ef4444, #fb7185);
-    }
-
-    .green {
-      background: linear-gradient(135deg, #22c55e, #14b8a6);
-    }
-
-    .blue {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-    }
-
-    .pink {
-      background: linear-gradient(135deg, #ec4899, #f43f5e);
-    }
-  </style>
+<style>
+:root{
+  --bg:#090b1a;
+  --card:rgba(255,255,255,.12);
+  --card2:rgba(255,255,255,.18);
+  --text:#fff;
+  --muted:rgba(255,255,255,.72);
+  --pink:#ff4f8b;
+  --blue:#5b8cff;
+  --green:#32d583;
+  --orange:#ff8a00;
+  --red:#ff4d4d;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#4338ca 0,#090b1a 40%),
+    radial-gradient(circle at bottom right,#ec4899 0,#090b1a 45%);
+}
+.app{max-width:430px;margin:auto;padding:22px 18px 95px}
+.hero,.card{
+  background:linear-gradient(145deg,var(--card2),var(--card));
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:32px;
+  padding:22px;
+  margin:18px 0;
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+  backdrop-filter:blur(18px);
+}
+h1{font-size:34px;margin:0 0 8px}
+h2{margin:0 0 12px;font-size:25px}
+p{line-height:1.45}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button,.btn{
+  border:0;
+  border-radius:22px;
+  padding:16px;
+  color:white;
+  font-weight:800;
+  font-size:15px;
+  text-align:center;
+  text-decoration:none;
+  background:rgba(255,255,255,.14);
+}
+.big{grid-column:span 2}
+.green{background:linear-gradient(135deg,#22c55e,#14b8a6)}
+.blue{background:linear-gradient(135deg,#3b82f6,#6366f1)}
+.pink{background:linear-gradient(135deg,#ec4899,#f43f5e)}
+.orange{background:linear-gradient(135deg,#fb7185,#f97316)}
+.red{background:linear-gradient(135deg,#ef4444,#f97316)}
+.section{display:none}
+.section.active{display:block}
+.circle{
+  width:190px;height:190px;border-radius:50%;
+  margin:28px auto;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:900;
+  background:radial-gradient(circle,#bfdbfe,#6366f1);
+  box-shadow:0 0 55px rgba(147,197,253,.75);
+  animation:breathe 8s infinite ease-in-out;
+}
+@keyframes breathe{0%{transform:scale(.82)}50%{transform:scale(1.22)}100%{transform:scale(.82)}}
+input,textarea,select{
+  width:100%;border:0;border-radius:18px;padding:15px;
+  margin:8px 0 14px;font-size:16px;
+}
+textarea{min-height:105px}
+.row{display:flex;gap:10px;overflow:auto;padding-bottom:8px}
+.chip{
+  white-space:nowrap;
+  background:rgba(255,255,255,.14);
+  padding:12px 15px;
+  border-radius:999px;
+  font-weight:700;
+}
+.warning{
+  background:rgba(239,68,68,.18);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:20px;
+  padding:14px;
+  font-size:14px;
+}
+.memory{
+  background:rgba(255,255,255,.1);
+  border-radius:22px;
+  padding:15px;
+  margin:10px 0;
+}
+.bottom{
+  position:fixed;bottom:12px;left:50%;transform:translateX(-50%);
+  width:min(430px,calc(100% - 24px));
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:7px;background:rgba(6,8,22,.82);
+  padding:9px;border-radius:25px;backdrop-filter:blur(20px);
+}
+.bottom button{font-size:11px;padding:11px 3px;border-radius:16px}
+.progressbar{
+  height:14px;background:rgba(255,255,255,.15);
+  border-radius:99px;overflow:hidden;
+}
+.progressbar div{height:100%;background:linear-gradient(90deg,#22c55e,#60a5fa);width:0%}
+</style>
 </head>
 
 <body>
-  <div class="app">
+<div class="app">
 
-    <div class="hero">
-      <h1>Con Te ❤️</h1>
-      <p class="muted">Un posto sicuro quando la mente corre troppo.</p>
-      <p class="daily" id="dailyPhrase"></p>
+<section class="hero">
+  <h1>Con Te ❤️</h1>
+  <p class="muted">Un posto sicuro quando la mente corre troppo.</p>
+  <p id="daily" style="font-size:19px;font-weight:800"></p>
 
-      <div class="grid">
-        <button onclick="show('calma')" class="green">😊 Sto bene</button>
-        <button onclick="show('ansia')" class="blue">😟 Sono agitato</button>
-        <button onclick="show('ipocondria')" class="pink">🧠 Paura salute</button>
-        <button onclick="show('sos')" class="big">🚨 Ho bisogno di aiuto</button>
-      </div>
-    </div>
+  <div class="grid">
+    <button class="green" onclick="show('home')">😊 Sto bene</button>
+    <button class="blue" onclick="show('anxiety')">😟 Ansia</button>
+    <button class="pink" onclick="show('health')">🧠 Paura salute</button>
+    <button class="red big" onclick="show('sos')">🚨 SOS</button>
+  </div>
+</section>
 
-    <div id="calma" class="card active">
-      <h2>Ciao amore</h2>
-      <p>Oggi va bene così. Anche solo stare un po’ meglio è già una vittoria.</p>
-      <button onclick="newLisaMessage()">Messaggio di Lisa 💌</button>
-      <p id="lisaMessage"></p>
-    </div>
-
-    <div id="ansia" class="card">
-      <h2>Fermiamoci un attimo</h2>
-      <p>Non dobbiamo risolvere tutto adesso. Prima calmiamo il corpo, poi ragioniamo.</p>
-      <button onclick="show('respira')" class="blue">🌬️ Respira con me</button>
-      <button onclick="newLisaMessage()" class="pink">💌 Messaggio di Lisa</button>
-      <p id="lisaMessage2"></p>
-    </div>
-
-    <div id="respira" class="card">
-      <h2>Respirazione guidata</h2>
-      <p class="muted">Segui il cerchio. Inspira, trattieni, espira.</p>
-      <div class="circle" id="breathText">Inspira</div>
-      <button onclick="startBreathing()">Inizia</button>
-    </div>
-
-    <div id="ipocondria" class="card">
-      <h2>Hai paura di avere qualcosa?</h2>
-      <p>Prima di pensare al peggio, facciamo un controllo realtà.</p>
-
-      <label>Quanto è forte la paura da 0 a 10?</label>
-      <select id="fear">
-        <option value="3">0-3 lieve</option>
-        <option value="6">4-6 media</option>
-        <option value="9">7-10 molto forte</option>
-      </select>
-
-      <label>Hai cercato i sintomi su Google?</label>
-      <select id="google">
-        <option>Sì</option>
-        <option>No</option>
-      </select>
-
-      <label>Hai già avuto questa paura altre volte?</label>
-      <select id="again">
-        <option>Sì</option>
-        <option>No</option>
-      </select>
-
-      <button onclick="healthCheck()" class="pink">Aiutami a ragionare</button>
-      <p id="healthResult"></p>
-
-      <div class="warning">
-        Questa app non sostituisce un medico. Se hai dolore forte al petto, difficoltà importante a respirare, svenimento, confusione, perdita di forza improvvisa, sanguinamento importante o sintomi gravi/improvvisi, chiama il 112.
-      </div>
-    </div>
-
-    <div id="diario" class="card">
-      <h2>Diario</h2>
-      <p class="muted">Scrivi quello che senti. Rimane salvato solo su questo telefono.</p>
-      <textarea id="diary" placeholder="Oggi mi sento..."></textarea>
-      <button onclick="saveDiary()" class="green">Salva</button>
-      <p id="saved"></p>
-    </div>
-
-    <div id="sos" class="card">
-      <h2>SOS ❤️</h2>
-      <p>Va bene. Non sei solo. Scegli una cosa piccola da fare adesso.</p>
-
-      <a class="btn sos" href="tel:+393387590528">📞 Chiama Lisa</a>
-      <br>
-      <a class="btn green" href="https://wa.me/39TUONUMERO?text=Amore%2C%20sto%20andando%20in%20ansia.%20Mi%20aiuti%20a%20calmarmi%3F">💬 Scrivi a Lisa</a>
-      <br>
-      <button onclick="show('respira')" class="blue">🌬️ Fai respirazione</button>
-    </div>
+<section id="home" class="section active">
+  <div class="card">
+    <h2>Ciao amore</h2>
+    <p>Oggi non devi essere perfetto. Devi solo fare un passo piccolo, poi un altro.</p>
+    <button class="pink" onclick="lisaMsg()">💌 Messaggio di Lisa</button>
+    <p id="msg"></p>
   </div>
 
-  <div class="bottom">
-    <button onclick="show('calma')">Home</button>
-    <button onclick="show('respira')">Respira</button>
-    <button onclick="show('diario')">Diario</button>
-    <button onclick="show('sos')">SOS</button>
+  <div class="card">
+    <h2>Come ti senti?</h2>
+    <div class="row">
+      <span class="chip" onclick="saveMood(10)">😄 Bene</span>
+      <span class="chip" onclick="saveMood(7)">🙂 Ok</span>
+      <span class="chip" onclick="saveMood(5)">😐 Così così</span>
+      <span class="chip" onclick="saveMood(3)">😰 Ansioso</span>
+      <span class="chip" onclick="saveMood(1)">🚨 Male</span>
+    </div>
+    <p id="moodSaved" class="muted"></p>
+  </div>
+</section>
+
+<section id="anxiety" class="section">
+  <div class="card">
+    <h2>Fermiamoci</h2>
+    <p>Prima calmiamo il corpo. Poi ascoltiamo i pensieri. Non devi decidere niente mentre l’ansia è al massimo.</p>
+    <button class="blue" onclick="show('breath')">🌬️ Respirazione guidata</button><br><br>
+    <button class="pink" onclick="lisaMsg()">💌 Messaggio di Lisa</button>
+    <p id="msg2"></p>
   </div>
 
-  <script>
-    const dailyPhrases = [
-      "Respira. Non devi affrontare tutto in un solo momento.",
-      "La paura è forte, ma tu sei più forte della paura.",
-      "Un passo alla volta. Io sono con te.",
-      "Prima calmiamo il corpo, poi ascoltiamo i pensieri.",
-      "Anche oggi puoi farcela."
-    ];
+  <div class="card">
+    <h2>Metodo 5-4-3-2-1</h2>
+    <p>Guarda intorno e trova:</p>
+    <p>5 cose che vedi<br>4 cose che senti col tatto<br>3 suoni<br>2 odori<br>1 cosa bella che puoi dirti</p>
+  </div>
+</section>
 
-    const lisaMessages = [
-      "Amore, respira. Ci sono io.",
-      "Non devi capire tutto adesso.",
-      "Non sei solo, anche quando ti sembra così.",
-      "Ti conosco: questa paura passa.",
-      "Bevi un po’ d’acqua, siediti e respira piano.",
-      "Non lasciare che Google decida come stai.",
-      "Ti voglio bene. Un minuto alla volta.",
-      "Prima respiriamo, poi ragioniamo insieme."
-    ];
+<section id="breath" class="section">
+  <div class="card">
+    <h2>Respira con me</h2>
+    <p class="muted">Segui il cerchio per 2 minuti.</p>
+    <div class="circle" id="breathText">Inspira</div>
+    <button class="blue" onclick="startBreath()">Inizia</button>
+    <button onclick="stopBreath()">Stop</button>
+  </div>
+</section>
 
-    document.getElementById("dailyPhrase").innerText =
-      dailyPhrases[new Date().getDate() % dailyPhrases.length];
+<section id="health" class="section">
+  <div class="card">
+    <h2>Paura per la salute</h2>
+    <p>Non ti dirò “non hai niente”. Ti aiuto a ragionare senza farti trascinare dal panico.</p>
 
-    function show(id) {
-      document.querySelectorAll(".card").forEach(card => card.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    <label>Paura da 0 a 10</label>
+    <select id="fear">
+      <option value="3">0-3 lieve</option>
+      <option value="6">4-6 media</option>
+      <option value="9">7-10 molto forte</option>
+    </select>
 
-    function newLisaMessage() {
-      const msg = lisaMessages[Math.floor(Math.random() * lisaMessages.length)];
-      document.getElementById("lisaMessage").innerText = msg;
-      document.getElementById("lisaMessage2").innerText = msg;
-    }
+    <label>Hai cercato su Google?</label>
+    <select id="googled">
+      <option>Sì</option>
+      <option>No</option>
+    </select>
 
-    function startBreathing() {
-      const words = ["Inspira", "Trattieni", "Espira"];
-      let i = 0;
-      const el = document.getElementById("breathText");
-      el.innerText = words[i];
+    <label>Ti è già successo di avere questa paura?</label>
+    <select id="again">
+      <option>Sì</option>
+      <option>No</option>
+    </select>
 
-      clearInterval(window.breathInterval);
-      window.breathInterval = setInterval(() => {
-        i = (i + 1) % words.length;
-        el.innerText = words[i];
-        if (navigator.vibrate) navigator.vibrate(80);
-      }, 4000);
-    }
+    <label>Il sintomo è grave/improvviso?</label>
+    <select id="urgent">
+      <option>No / non so</option>
+      <option>Sì, è molto forte o improvviso</option>
+    </select>
 
-    function healthCheck() {
-      const fear = Number(document.getElementById("fear").value);
-      const google = document.getElementById("google").value;
-      const again = document.getElementById("again").value;
+    <button class="pink" onclick="healthCheck()">Aiutami a ragionare</button>
+    <p id="healthResult"></p>
 
-      let result = "";
+    <div class="warning">
+      Se hai dolore forte al petto, difficoltà importante a respirare, svenimento, confusione, debolezza improvvisa, sanguinamento importante o sintomi gravi/improvvisi, chiama il 112.
+    </div>
+  </div>
+</section>
 
-      if (fear >= 7) {
-        result = "La paura adesso è molto alta. Prima facciamo 3 minuti di respirazione. Non prendere decisioni mentre l’ansia è al massimo.";
-      } else {
-        result = "La paura c’è, ma possiamo ragionarci. Fai un respiro lento e prova ad aspettare 10 minuti prima di cercare altre rassicurazioni.";
-      }
+<section id="diary" class="section">
+  <div class="card">
+    <h2>Diario</h2>
+    <textarea id="diaryText" placeholder="Oggi ho avuto paura perché..."></textarea>
+    <button class="green" onclick="saveDiary()">Salva nota</button>
+    <button onclick="clearDiary()">Cancella tutto</button>
+    <div id="diaryList"></div>
+  </div>
+</section>
 
-      if (google === "Sì") {
-        result += " Hai cercato su Google: questo spesso aumenta l’ansia e fa sembrare tutto più grave.";
-      }
+<section id="progress" class="section">
+  <div class="card">
+    <h2>Progressi</h2>
+    <p>Giorni registrati: <b id="daysCount">0</b></p>
+    <p>Ultimo umore salvato: <b id="lastMood">-</b></p>
+    <div class="progressbar"><div id="moodBar"></div></div>
+  </div>
 
-      if (again === "Sì") {
-        result += " Se questa paura è già successa altre volte, potrebbe essere la mente che ripete un allarme già conosciuto.";
-      }
+  <div class="card">
+    <h2>Scatola dei ricordi</h2>
+    <div class="memory">❤️ “Tu non sei la tua ansia.”</div>
+    <div class="memory">🌙 “Anche se ora sembra enorme, passa.”</div>
+    <div class="memory">🫶 “Lisa è con te. Un respiro alla volta.”</div>
+  </div>
+</section>
 
-      result += " Se però senti sintomi gravi, improvvisi o molto diversi dal solito, contatta un medico o il 112.";
+<section id="relax" class="section">
+  <div class="card">
+    <h2>Relax</h2>
+    <p>Premi un suono rilassante.</p>
+    <button onclick="playTone(220)">🌧️ Pioggia soft</button>
+    <button onclick="playTone(130)">🌊 Mare</button>
+    <button onclick="playTone(90)">🤍 Rumore basso</button>
+    <button onclick="stopTone()">Stop</button>
+  </div>
+</section>
 
-      document.getElementById("healthResult").innerText = result;
-    }
+<section id="sos" class="section">
+  <div class="card">
+    <h2>SOS ❤️</h2>
+    <p>Va bene. Non sei solo. Scegli una cosa da fare adesso.</p>
 
-    function saveDiary() {
-      const text = document.getElementById("diary").value;
-      localStorage.setItem("diary", text);
-      document.getElementById("saved").innerText = "Salvato ❤️";
-    }
+    <a class="btn red" href="tel:+393387590528">📞 Chiama Lisa</a><br>
+    <a class="btn green" href="https://wa.me/39TUONUMERO?text=Amore%2C%20sto%20andando%20in%20ansia.%20Mi%20aiuti%20a%20calmarmi%3F">💬 Scrivi a Lisa</a><br>
+    <button class="blue" onclick="show('breath')">🌬️ Respirazione immediata</button><br><br>
+    <button class="pink" onclick="show('health')">🧠 Paura salute</button>
+  </div>
+</section>
 
-    window.onload = () => {
-      const saved = localStorage.getItem("diary");
-      if (saved) document.getElementById("diary").value = saved;
-    };
-  </script>
+</div>
+
+<nav class="bottom">
+  <button onclick="show('home')">Home</button>
+  <button onclick="show('breath')">Respira</button>
+  <button onclick="show('health')">Salute</button>
+  <button onclick="show('diary')">Diario</button>
+  <button onclick="show('sos')">SOS</button>
+</nav>
+
+<script>
+const dailyPhrases=[
+"Un passo alla volta. Io sono con te.",
+"La paura è forte, ma tu sei più forte della paura.",
+"Prima respiriamo. Poi ragioniamo.",
+"Non devi risolvere tutto adesso.",
+"Anche oggi puoi farcela."
+];
+
+const lisaMessages=[
+"Amore, respira. Ci sono io.",
+"Non devi affrontare tutto da solo.",
+"Non lasciare che Google decida come stai.",
+"Ti conosco: questa paura passa.",
+"Bevi un po’ d’acqua, siediti e respira piano.",
+"Un minuto alla volta. Ti voglio bene.",
+"Prima calmiamo il corpo, poi capiamo cosa fare.",
+"Non sei sbagliato perché hai paura."
+];
+
+document.getElementById("daily").innerText=dailyPhrases[new Date().getDate()%dailyPhrases.length];
+
+function show(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+  updateProgress();
+}
+
+function lisaMsg(){
+  const m=lisaMessages[Math.floor(Math.random()*lisaMessages.length)];
+  ["msg","msg2"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerText=m;
+  });
+}
+
+let breathInterval;
+function startBreath(){
+  const words=["Inspira","Trattieni","Espira"];
+  let i=0;
+  const el=document.getElementById("breathText");
+  clearInterval(breathInterval);
+  el.innerText=words[i];
+  breathInterval=setInterval(()=>{
+    i=(i+1)%words.length;
+    el.innerText=words[i];
+    if(navigator.vibrate) navigator.vibrate(60);
+  },4000);
+}
+function stopBreath(){clearInterval(breathInterval);document.getElementById("breathText").innerText="Inspira";}
+
+function healthCheck(){
+  const fear=Number(document.getElementById("fear").value);
+  const googled=document.getElementById("googled").value;
+  const again=document.getElementById("again").value;
+  const urgent=document.getElementById("urgent").value;
+
+  let r="";
+  if(urgent.includes("Sì")){
+    r+="Se il sintomo è davvero forte, improvviso o diverso dal solito, non restare da solo: chiama Lisa, un medico o il 112. ";
+  }else if(fear>=7){
+    r+="La paura ora è altissima. Prima fai 3 minuti di respirazione. Non cercare rassicurazioni finché il corpo non scende di intensità. ";
+  }else{
+    r+="La paura c’è, ma possiamo aspettare 10 minuti e rivalutare. Respira, bevi acqua e resta nel presente. ";
+  }
+  if(googled==="Sì") r+="Google spesso aumenta l’ansia e fa sembrare tutto più grave. ";
+  if(again==="Sì") r+="Questa paura è già successa: potrebbe essere un allarme conosciuto della mente. ";
+  r+="Dopo la respirazione, scegli: chiamare Lisa, scriverle o segnare tutto nel diario.";
+  document.getElementById("healthResult").innerText=r;
+}
+
+function saveDiary(){
+  const text=document.getElementById("diaryText").value.trim();
+  if(!text)return;
+  const notes=JSON.parse(localStorage.getItem("notes")||"[]");
+  notes.unshift({date:new Date().toLocaleString("it-IT"),text});
+  localStorage.setItem("notes",JSON.stringify(notes));
+  document.getElementById("diaryText").value="";
+  renderDiary();
+}
+function renderDiary(){
+  const notes=JSON.parse(localStorage.getItem("notes")||"[]");
+  document.getElementById("diaryList").innerHTML=notes.map(n=>`
+    <div class="memory"><b>${n.date}</b><br>${n.text}</div>
+  `).join("");
+}
+function clearDiary(){
+  if(confirm("Cancellare tutte le note?")){
+    localStorage.removeItem("notes");
+    renderDiary();
+  }
+}
+
+function saveMood(v){
+  const moods=JSON.parse(localStorage.getItem("moods")||"[]");
+  moods.push({date:new Date().toLocaleDateString("it-IT"),value:v});
+  localStorage.setItem("moods",JSON.stringify(moods));
+  document.getElementById("moodSaved").innerText="Umore salvato ❤️";
+  updateProgress();
+}
+function updateProgress(){
+  const moods=JSON.parse(localStorage.getItem("moods")||"[]");
+  document.getElementById("daysCount").innerText=moods.length;
+  const last=moods[moods.length-1];
+  document.getElementById("lastMood").innerText=last?last.value+"/10":"-";
+  document.getElementById("moodBar").style.width=last?(last.value*10)+"%":"0%";
+}
+
+let audioCtx,osc;
+function playTone(freq){
+  stopTone();
+  audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  osc=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  osc.frequency.value=freq;
+  gain.gain.value=0.05;
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+}
+function stopTone(){
+  if(osc){osc.stop();osc=null}
+}
+
+renderDiary();
+updateProgress();
+</script>
 </body>
 </html>
