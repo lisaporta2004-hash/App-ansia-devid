@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respira con me</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #dbeafe, #fce7f3);
+      color: #222;
+    }
+
+    .app {
+      max-width: 430px;
+      margin: auto;
+      padding: 25px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 35px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    button {
+      background: #ec4899;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 18px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      background: #bfdbfe;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      animation: breathe 8s infinite;
+    }
+
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      border-radius: 16px;
+      border: 1px solid #ddd;
+      padding: 12px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    .emergency {
+      display: block;
+      background: #ef4444;
+      color: white;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 20px;
+      margin-top: 25px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <h1>Respira con me ❤️</h1>
+    <p class="subtitle">Va tutto bene. Un passo alla volta.</p>
+
+    <div class="card">
+      <h2>Quando arriva l’ansia</h2>
+      <p id="phrase">Premi il bottone e respira con me.</p>
+      <button onclick="newPhrase()">Dammi una frase</button>
+    </div>
+
+    <div class="card">
+      <h2>Respirazione</h2>
+      <div class="circle" id="circle">Inspira</div>
+      <button onclick="startBreathing()">Inizia</button>
+    </div>
+
+    <div class="card">
+      <h2>Diario</h2>
+      <textarea id="diary" placeholder="Scrivi come ti senti..."></textarea>
+      <button onclick="saveDiary()">Salva</button>
+      <p id="saved"></p>
+    </div>
+
+    <a class="emergency" href="tel:+39TUONUMERO">Chiama Lisa</a>
+  </div>
+
+  <script>
+    const phrases = [
+      "Amore, respira. Non sei solo.",
+      "Questa sensazione passa, anche se ora sembra enorme.",
+      "Fai un respiro lento. Io sono con te.",
+      "Non devi risolvere tutto adesso.",
+      "Sei al sicuro. Un minuto alla volta.",
+      "Il tuo corpo sta solo reagendo, non sei in pericolo.",
+      "Hai già superato momenti difficili. Supererai anche questo."
+    ];
+
+    function newPhrase() {
+      const random = Math.floor(Math.random() * phrases.length);
+      document.getElementById("phrase").innerText = phrases[random];
+    }
+
+    function startBreathing() {
+      const circle = document.getElementById("circle");
+      let steps = ["Inspira", "Trattieni", "Espira"];
+      let i = 0;
+
+      circle.innerText = steps[i];
+
+      setInterval(() => {
+        i = (i + 1) % steps.length;
+        circle.innerText = steps[i];
+      }, 4000);
+    }
+
+    function saveDiary() {
+      const text = document.getElementById("diary").value;
+      localStorage.setItem("diary", text);
+      document.getElementById("saved").innerText = "Salvato ❤️";
+    }
+
+    window.onload = () => {
+      const savedDiary = localStorage.getItem("diary");
+      if (savedDiary) {
+        document.getElementById("diary").value = savedDiary;
+      }
+    };
+  </script>
+</body>
+</html>
